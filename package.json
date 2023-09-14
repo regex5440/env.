@@ -14,6 +14,7 @@
     "onLanguage:typescript"
   ],
   "main": "./out/extension.js",
+  "publisher": "HDxDev",
   "contributes": {
     "languages": [
       {
