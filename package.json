@@ -2,6 +2,7 @@
   "name": "envdot",
   "displayName": "envdot",
   "description": "Get auto-complete suggestions for the variables in .env or .env.local files in workspace",
+  "icon": "images/logo.png",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.82.0"
