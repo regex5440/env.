@@ -12,9 +12,7 @@ Get auto-complete suggestions for the variables from your `.env` or `.env.local`
 - Provides auto-completion for environment variables by typing: `env.`
 - Supports [Vite](https://vitejs.dev/)'s special import object: `import.meta.env.`
 
-For example if there is an image subfolder under your extension project workspace:
-
-[Auto-Complete Suggestions](src/assets/Recording.gif)
+<img src="./src/assets/Recording.gif" alt="Auto-Complete Suggestions GIF"/>
 
 ## Requirements
 
