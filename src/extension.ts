@@ -71,6 +71,9 @@ class EnvCompletionItemProvider implements vscode.CompletionItemProvider {
           let content = fs.readFileSync(name, "utf8");
           let lines = content.split("\n");
           for (let line of lines) {
+            if (line.startsWith("#")) {
+              continue;
+            }
             let [key, value] = line.split("=");
             if (key && value) {
               envVariables.push({ name: key, value, file: name });
