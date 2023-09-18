@@ -46,6 +46,7 @@ class EnvCompletionItemProvider implements vscode.CompletionItemProvider {
           })
         );
       } else {
+        console.log("No Match");
         resolve([]);
       }
     });

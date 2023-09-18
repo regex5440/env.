@@ -3,9 +3,10 @@
   "displayName": "envdot",
   "description": "Get auto-complete suggestions for the variables in .env or .env.local files in workspace",
   "icon": "images/logo.png",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "engines": {
-    "vscode": "^1.82.0"
+    "vscode": "^1.82.0",
+    "typescript": "^5.2.2"
   },
   "categories": [
     "Other"
@@ -44,6 +45,14 @@
       }
     ],
     "completions": [
+      {
+        "extensions": {
+          "**/*.ts": "TS",
+          "**/*.js": "JS",
+          "**/*.jsx": "JSX",
+          "**/*.tsx": "TSX"
+        }
+      },
       {
         "language": "javascript",
         "path": "./completions.json"
