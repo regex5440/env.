@@ -33,6 +33,18 @@ class EnvCompletionItemProvider implements vscode.CompletionItemProvider {
           });
         }
         let uniqueEnvVariables = [...new Set(envVariables)];
+        const prefixMatch = line
+          .slice(0, position.character)
+          .match(/\??\.\s*$/);
+        let prefixRange: vscode.Range | undefined;
+        let prefix: string | undefined;
+        if (prefixMatch) {
+          prefixRange = new vscode.Range(
+            position.translate({ characterDelta: -prefixMatch[0].length }),
+            position
+          );
+          prefix = document.getText(prefixRange);
+        }
         resolve(
           uniqueEnvVariables.map(({ name, value, file }, index) => {
             const cItem = new vscode.CompletionItem(
@@ -42,6 +54,11 @@ class EnvCompletionItemProvider implements vscode.CompletionItemProvider {
             cItem.documentation = new vscode.MarkdownString(
               `**Environment Variable**\n\n _File: ${file}_\n\n${name}=${value}`
             );
+            const completionText = prefix ? `${prefix}${name}` : name;
+            cItem.insertText = completionText;
+            cItem.filterText = completionText;
+            cItem.range = prefixRange;
+            cItem.sortText = "15";
             return cItem;
           })
         );
