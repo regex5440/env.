@@ -24,7 +24,7 @@ class EnvCompletionItemProvider implements vscode.CompletionItemProvider {
   ): Thenable<vscode.CompletionItem[]> {
     return new Promise((resolve, reject) => {
       let line = document.lineAt(position).text;
-      if (line.match(/env\./)) {
+      if (line.match(/((process\??\.)|(import\??\.meta\??\.))env\??\./)) {
         let envVariables: EnvVarItem[] = [];
         const workspaceFolder = vscode.workspace.workspaceFolders; //TODO: This should be selectable in case of multiple env files
         if (workspaceFolder) {
